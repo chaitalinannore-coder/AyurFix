@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | AyurFix</title>
+
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: "DM Sans", sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(rgba(248, 245, 233, 0.90),
+                    rgba(232, 239, 217, 0.95)),
+                url("https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #26351f;
+
+            padding: 25px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .register-container {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            min-height: 650px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            box-shadow:
+                0 25px 70px rgba(35, 77, 32, 0.20);
+        }
+
+
+        /* =====================================================
+           LEFT SIDE
+        ===================================================== */
+
+        .register-left {
+
+            position: relative;
+
+            padding: 55px;
+
+            color: white;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(rgba(35, 77, 32, 0.91),
+                    rgba(48, 83, 36, 0.94)),
+                url("https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=85");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        .register-left::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255, 255, 255, 0.10);
+
+            right: -80px;
+
+            top: -60px;
+        }
+
+
+        .register-left::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+
+            height: 330px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.04);
+
+            left: -150px;
+
+            bottom: -130px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .brand-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            border-radius: 50%;
+
+            background: #f4e8b5;
+
+            color: #234d20;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 27px;
+        }
+
+
+        .brand-name {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 32px;
+
+            font-weight: 700;
+        }
+
+
+        .brand-name span {
+
+            color: #d7c47b;
+        }
+
+
+        /* =====================================================
+           LEFT CONTENT
+        ===================================================== */
+
+        .register-left h1 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 45px;
+
+            line-height: 1.15;
+
+            margin-bottom: 20px;
+        }
+
+
+        .register-left h1 span {
+
+            color: #d7c47b;
+        }
+
+
+        .register-left p {
+
+            max-width: 430px;
+
+            line-height: 1.8;
+
+            color: #e1e8d9;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           BENEFITS
+        ===================================================== */
+
+        .benefits {
+
+            margin-top: 32px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        .benefit {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 14px;
+        }
+
+
+        .benefit i {
+
+            color: #d7c47b;
+
+            font-size: 17px;
+
+            width: 20px;
+        }
+
+
+        /* =====================================================
+           RIGHT SIDE
+        ===================================================== */
+
+        .register-right {
+
+            padding: 45px 65px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .welcome {
+
+            margin-bottom: 25px;
+        }
+
+
+        .welcome h2 {
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 34px;
+
+            color: #234d20;
+
+            margin-bottom: 7px;
+        }
+
+
+        .welcome p {
+
+            color: #73786d;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 16px;
+
+            position: relative;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #384531;
+        }
+
+
+        .input-box {
+
+            position: relative;
+        }
+
+
+        .input-box>i {
+
+            position: absolute;
+
+            left: 16px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #71835e;
+
+            font-size: 15px;
+
+            z-index: 2;
+        }
+
+
+        .input-box input {
+
+            width: 100%;
+
+            padding: 13px 43px;
+
+            border: 1px solid #d7ddc9;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            background: #fafbf5;
+
+            transition: 0.3s;
+        }
+
+
+        .input-box input:focus {
+
+            border-color: #668848;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 3px rgba(102, 136, 72, 0.10);
+        }
+
+
+        /* =====================================================
+           PASSWORD TOGGLE
+        ===================================================== */
+
+        .password-toggle {
+
+            position: absolute;
+
+            right: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: none;
+
+            cursor: pointer;
+
+            color: #77816e;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           PASSWORD STRENGTH
+        ===================================================== */
+
+        .password-strength {
+
+            height: 4px;
+
+            background: #e7eadf;
+
+            border-radius: 10px;
+
+            margin-top: 7px;
+
+            overflow: hidden;
+        }
+
+
+        .strength-bar {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 10px;
+
+            transition: 0.3s;
+        }
+
+
+        .strength-text {
+
+            font-size: 11px;
+
+            color: #858b80;
+
+            margin-top: 4px;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           TERMS
+        ===================================================== */
+
+        .terms {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 8px;
+
+            font-size: 12px;
+
+            color: #73786e;
+
+            line-height: 1.5;
+
+            margin: 5px 0 20px;
+        }
+
+
+        .terms input {
+
+            margin-top: 3px;
+
+            accent-color: #4d7c35;
+
+            cursor: pointer;
+        }
+
+
+        .terms a {
+
+            color: #4d7c35;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+
+        .terms a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           REGISTER BUTTON
+        ===================================================== */
+
+        .register-button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: #234d20;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .register-button:hover {
+
+            background: #4d7c35;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(35, 77, 32, 0.18);
+        }
+
+
+        .register-button i {
+
+            margin-left: 7px;
+        }
+
+
+        /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 20px 0;
+
+            color: #aaa;
+
+            font-size: 11px;
+        }
+
+
+        .divider::before,
+        .divider::after {
+
+            content: "";
+
+            height: 1px;
+
+            background: #e1e4d9;
+
+            flex: 1;
+        }
+
+
+        /* =====================================================
+           LOGIN LINK
+        ===================================================== */
+
+        .login-text {
+
+            text-align: center;
+
+            font-size: 13px;
+
+            color: #73786e;
+        }
+
+
+        .login-text a {
+
+            color: #4d7c35;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+
+        .login-text a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           BACK HOME
+        ===================================================== */
+
+        .back-home {
+
+            text-align: center;
+
+            margin-top: 18px;
+        }
+
+
+        .back-home a {
+
+            color: #687160;
+
+            font-size: 12px;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+
+        .back-home a:hover {
+
+            color: #234d20;
+        }
+
+
+        /* =====================================================
+           ERROR MESSAGE
+        ===================================================== */
+
+        .error-message {
+
+            display: none;
+
+            background: #fff0ee;
+
+            color: #a33a2b;
+
+            border: 1px solid #f0c5bf;
+
+            padding: 10px 12px;
+
+            border-radius: 9px;
+
+            margin-bottom: 15px;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           SUCCESS MESSAGE
+        ===================================================== */
+
+        .success-message {
+
+            display: none;
+
+            background: #edf7e7;
+
+            color: #35652b;
+
+            border: 1px solid #c6dfb9;
+
+            padding: 10px 12px;
+
+            border-radius: 9px;
+
+            margin-bottom: 15px;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .register-container {
+
+                grid-template-columns: 1fr;
+
+                min-height: auto;
+            }
+
+
+            .register-left {
+
+                padding: 40px 30px;
+            }
+
+
+            .register-left h1 {
+
+                font-size: 35px;
+            }
+
+
+            .benefits {
+
+                display: none;
+            }
+
+
+            .brand {
+
+                margin-bottom: 25px;
+            }
+
+
+            .register-right {
+
+                padding: 40px 30px;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .register-left {
+
+                padding: 30px 25px;
+            }
+
+
+            .register-right {
+
+                padding: 35px 22px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     MAIN REGISTER CONTAINER
+===================================================== -->
+
+    <div class="register-container">
+
+
+        <!-- ==================================================
+         LEFT SECTION
+    ================================================== -->
+
+        <div class="register-left">
+
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                </div>
+
+                <div class="brand-name">
+
+                    Ayur<span>Fix</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <h1>
+
+                Begin Your
+                <span>Wellness Journey.</span>
+
+            </h1>
+
+
+            <p>
+
+                Create your AyurFix account and explore the
+                wisdom of Ayurveda through trusted remedies,
+                wellness guidance and personalized recommendations.
+
+            </p>
+
+
+            <!-- BENEFITS -->
+
+            <div class="benefits">
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Discover verified Ayurvedic remedies
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Search remedies based on your symptoms
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Save your favourite remedies
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Keep your wellness journey organized
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+         RIGHT SECTION
+    ================================================== -->
+
+        <div class="register-right">
+
+
+            <!-- HEADING -->
+
+            <div class="welcome">
+
+                <h2>
+                    Create Account
+                </h2>
+
+                <p>
+                    Join AyurFix and start your natural wellness journey.
+                </p>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div class="error-message" id="errorMessage">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                <span id="errorText"></span>
+
+            </div>
+
+
+            <!-- SUCCESS -->
+
+            <div class="success-message" id="successMessage">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Account created successfully! Redirecting to login...
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="registerForm" method="POST" action="{{ url_for('register') }}">
+
+
+                <!-- =================================================
+                 FULL NAME
+            ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+
+                        Full Name
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+
+                        <input type="text" id="fullName" name="full_name" placeholder="Enter your full name"
+                            autocomplete="name" required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                 EMAIL
+            ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="email">
+
+                        Email Address
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email address"
+                            autocomplete="email" required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                 PASSWORD
+            ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+
+                        <input type="password" id="password" name="password" placeholder="Create a password"
+                            autocomplete="new-password" required>
+
+
+                        <button type="button" class="password-toggle" onclick="togglePassword('password','eye1')">
+
+                            <i class="fa-solid fa-eye" id="eye1">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- PASSWORD STRENGTH -->
+
+                    <div class="password-strength">
+
+                        <div class="strength-bar" id="strengthBar">
+                        </div>
+
+                    </div>
+
+
+                    <span class="strength-text" id="strengthText">
+
+                        Password strength
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- =================================================
+                 CONFIRM PASSWORD
+            ================================================== -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+
+                        Confirm Password
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+
+                        <input type="password" id="confirmPassword" name="confirm_password"
+                            placeholder="Confirm your password" autocomplete="new-password" required>
+
+                        <button type="button" class="password-toggle"
+                            onclick="togglePassword('confirmPassword','eye2')">
+
+                            <i class="fa-solid fa-eye" id="eye2">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                 TERMS
+            ================================================== -->
+
+                <label class="terms">
+
+                    <input type="checkbox" id="terms" name="terms" required>
+
+
+                    <span>
+
+                        I agree to the
+                        <a href="#" onclick="showTerms(event)">
+                            Terms & Conditions
+                        </a>
+                        and AyurFix privacy policy.
+
+                    </span>
+
+                </label>
+
+
+
+                <!-- =================================================
+                 REGISTER BUTTON
+            ================================================== -->
+
+                <button type="submit" class="register-button">
+
+                    Create Account
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- DIVIDER -->
+
+            <div class="divider">
+
+                OR
+
+            </div>
+
+
+
+            <!-- LOGIN -->
+
+            <div class="login-text">
+
+                Already have an account?
+
+                <a href="{{ url_for('login') }}">
+
+                    Login
+
+                </a>
+
+            </div>
+
+
+
+            <!-- BACK HOME -->
+
+            <div class="back-home">
+
+                <a href="{{ url_for('home') }}">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to AyurFix
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           PASSWORD VISIBILITY
+        ===================================================== */
+
+        function togglePassword(inputId, iconId) {
+
+            const password =
+                document.getElementById(inputId);
+
+            const icon =
+                document.getElementById(iconId);
+
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                icon.classList.remove("fa-eye");
+
+                icon.classList.add("fa-eye-slash");
+
+            }
+
+            else {
+
+                password.type = "password";
+
+                icon.classList.remove("fa-eye-slash");
+
+                icon.classList.add("fa-eye");
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           PASSWORD STRENGTH
+        ===================================================== */
+
+        document
+            .getElementById("password")
+            .addEventListener("input", function () {
+
+                const password = this.value;
+
+                const strengthBar =
+                    document.getElementById("strengthBar");
+
+                const strengthText =
+                    document.getElementById("strengthText");
+
+
+                let strength = 0;
+
+
+                /* Length */
+
+                if (password.length >= 6) {
+
+                    strength++;
+
+                }
+
+
+                /* Contains number */
+
+                if (/[0-9]/.test(password)) {
+
+                    strength++;
+
+                }
+
+
+                /* Contains uppercase */
+
+                if (/[A-Z]/.test(password)) {
+
+                    strength++;
+
+                }
+
+
+                /* Contains special character */
+
+                if (/[^A-Za-z0-9]/.test(password)) {
+
+                    strength++;
+
+                }
+
+
+                if (password.length === 0) {
+
+                    strengthBar.style.width = "0%";
+
+                    strengthText.innerText =
+                        "Password strength";
+
+                }
+
+
+                else if (strength <= 1) {
+
+                    strengthBar.style.width = "25%";
+
+                    strengthText.innerText =
+                        "Weak password";
+
+                }
+
+
+                else if (strength === 2) {
+
+                    strengthBar.style.width = "50%";
+
+                    strengthText.innerText =
+                        "Medium password";
+
+                }
+
+
+                else if (strength === 3) {
+
+                    strengthBar.style.width = "75%";
+
+                    strengthText.innerText =
+                        "Strong password";
+
+                }
+
+
+                else {
+
+                    strengthBar.style.width = "100%";
+
+                    strengthText.innerText =
+                        "Very strong password";
+
+                }
+
+            });
+
+
+
+        /* =====================================================
+           REGISTER FORM
+        ===================================================== */
+
+
+
+
+        /* =====================================================
+           SHOW ERROR
+        ===================================================== */
+
+        function showError(message) {
+
+            const errorMessage =
+                document.getElementById("errorMessage");
+
+            const errorText =
+                document.getElementById("errorText");
+
+
+            errorText.innerText = message;
+
+            errorMessage.style.display = "block";
+
+        }
+
+
+
+        /* =====================================================
+           EMAIL VALIDATION
+        ===================================================== */
+
+        function validateEmail(email) {
+
+            const pattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            return pattern.test(email);
+
+        }
+        /* =====================================================
+           TERMS & CONDITIONS
+        ===================================================== */
+
+        function showTerms(event) {
+
+            event.preventDefault();
+
+
+            alert(
+
+                "AyurFix Terms & Conditions\n\n" +
+
+                "By creating an account, you agree to use AyurFix " +
+
+                "for general wellness and educational purposes. " +
+
+                "AyurFix does not replace professional medical advice."
+
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

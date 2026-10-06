@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AyurFix | Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f5f8f2;
+            color: #26352b;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 72px;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #e5ebe2;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            text-decoration: none;
+            color: #315d3b;
+
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 25px;
+            color: #6b9b58;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #526257;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #315d3b;
+        }
+
+        .logout-btn {
+            text-decoration: none;
+            color: white;
+            background: #477a4f;
+
+            padding: 9px 18px;
+            border-radius: 22px;
+
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: #37653f;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 88%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 35px 0 50px;
+        }
+
+
+        /* =========================
+           WELCOME / HERO
+        ========================= */
+
+        .hero {
+            min-height: 300px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(31, 69, 40, 0.94),
+                    rgba(53, 91, 58, 0.72)
+                ),
+                url("https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            border-radius: 25px;
+
+            padding: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            overflow: hidden;
+
+            box-shadow: 0 12px 35px rgba(35, 65, 40, 0.12);
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .small-title {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.7;
+            max-width: 580px;
+            opacity: 0.92;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 25px;
+
+            background: white;
+            color: #315d3b;
+
+            padding: 12px 22px;
+            border-radius: 25px;
+
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+
+            margin-top: 25px;
+        }
+
+        .stat-card {
+            background: white;
+
+            border: 1px solid #e5ebe2;
+
+            border-radius: 18px;
+
+            padding: 24px;
+
+            display: flex;
+            align-items: center;
+            gap: 18px;
+
+            box-shadow: 0 5px 20px rgba(40, 70, 45, 0.05);
+        }
+
+        .stat-icon {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #edf5e9;
+            color: #4d7d52;
+
+            font-size: 22px;
+        }
+
+        .stat-info p {
+            color: #748078;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .stat-info h2 {
+            font-size: 26px;
+            color: #294b31;
+        }
+
+
+        /* =========================
+           QUICK SEARCH
+        ========================= */
+
+        .section {
+            margin-top: 35px;
+        }
+
+        .section-heading {
+            margin-bottom: 15px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            color: #294b31;
+        }
+
+        .section-heading p {
+            color: #718078;
+            margin-top: 4px;
+        }
+
+        .search-card {
+            background: white;
+            border-radius: 20px;
+
+            padding: 25px;
+
+            border: 1px solid #e5ebe2;
+
+            box-shadow: 0 5px 20px rgba(40, 70, 45, 0.05);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .search-input-wrapper {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+
+            border: 1px solid #d9e1d8;
+            border-radius: 12px;
+
+            padding: 0 16px;
+
+            background: #fafcf9;
+        }
+
+        .search-input-wrapper i {
+            color: #6e8971;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            padding: 15px 0;
+
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .search-button {
+            border: none;
+
+            background: #477a4f;
+            color: white;
+
+            padding: 0 25px;
+
+            border-radius: 12px;
+
+            font-family: inherit;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background: #37653f;
+        }
+
+
+        /* =========================
+           TWO COLUMN SECTION
+        ========================= */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 25px;
+
+            margin-top: 35px;
+        }
+
+
+        /* =========================
+           SEARCH HISTORY
+        ========================= */
+
+        .history-card {
+            background: white;
+
+            border: 1px solid #e5ebe2;
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 20px rgba(40, 70, 45, 0.05);
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #edf0ec;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .history-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 12px;
+
+            background: #eef6e9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #55815a;
+        }
+
+        .history-name {
+            font-weight: 600;
+            color: #334a38;
+        }
+
+        .history-date {
+            color: #8a948d;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        .empty-history {
+            text-align: center;
+            padding: 30px 10px;
+            color: #7b867e;
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile-card {
+            background: white;
+
+            border: 1px solid #e5ebe2;
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 20px rgba(40, 70, 45, 0.05);
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 22px;
+        }
+
+        .profile-avatar {
+            width: 62px;
+            height: 62px;
+
+            border-radius: 50%;
+
+            background: #477a4f;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .profile-top h3 {
+            color: #294b31;
+            margin-bottom: 4px;
+        }
+
+        .profile-top p {
+            color: #7a857e;
+            font-size: 14px;
+        }
+
+        .profile-detail {
+            padding: 13px 0;
+
+            border-bottom: 1px solid #edf0ec;
+        }
+
+        .profile-detail:last-child {
+            border-bottom: none;
+        }
+
+        .profile-label {
+            font-size: 12px;
+            color: #89938c;
+            margin-bottom: 3px;
+        }
+
+        .profile-value {
+            font-weight: 600;
+            color: #3b4d40;
+        }
+
+
+        /* =========================
+           AYURVEDA CARDS
+        ========================= */
+
+        .ayurveda-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ayurveda-card {
+            min-height: 190px;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ayurveda-card::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                transparent,
+                rgba(20, 50, 27, 0.85)
+            );
+        }
+
+        .ayurveda-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ayurveda-content i {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .ayurveda-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        .ayurveda-content p {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .herbs {
+            background-image:
+                url("https://images.unsplash.com/photo-1608570582448-5eab1e4c6e75?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .wellness {
+            background-image:
+                url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .nature {
+            background-image:
+                url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=800&q=80");
+        }
+
+
+        /* =========================
+           DISCLAIMER
+        ========================= */
+
+        .disclaimer {
+            margin-top: 35px;
+
+            background: #eef5ea;
+
+            border: 1px solid #dce8d9;
+
+            border-radius: 18px;
+
+            padding: 22px 25px;
+
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .disclaimer i {
+            color: #557b59;
+            font-size: 22px;
+            margin-top: 2px;
+        }
+
+        .disclaimer h4 {
+            color: #39563e;
+            margin-bottom: 5px;
+        }
+
+        .disclaimer p {
+            color: #66736a;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            margin-top: 35px;
+
+            color: #7b857e;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .ayurveda-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 35px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .hero {
+                padding: 28px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-button {
+                height: 48px;
+            }
+
+            .history-item {
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <a href="{{ url_for('home') }}" class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        AyurFix
+    </a>
+
+    <div class="nav-right">
+
+        <a href="{{ url_for('home') }}" class="nav-link">
+            Home
+        </a>
+
+        <a href="{{ url_for('logout') }}" class="logout-btn">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<main class="container">
+
+
+<!-- =========================
+     WELCOME
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            Your Personal Wellness Space
+        </div>
+
+        <h1>
+            Welcome back,<br>
+            {{ current_user.full_name }} 🌿
+        </h1>
+
+        <p>
+            Explore Ayurvedic remedies, discover natural wellness
+            information, and keep track of your personal searches
+            with AyurFix.
+        </p>
+
+        <a href="#quick-search" class="hero-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search a Remedy
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATISTICS
+========================= -->
+
+<section class="stats">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="stat-info">
+
+            <p>Total Searches</p>
+
+            <h2>
+                {{ history|length }}
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+
+        <div class="stat-info">
+
+            <p>Remedies Explored</p>
+
+            <h2>
+                {{ history|length }}
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            <i class="fa-solid fa-user-clock"></i>
+        </div>
+
+        <div class="stat-info">
+
+            <p>Account</p>
+
+            <h2 style="font-size: 19px;">
+                Member
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     QUICK SEARCH
+========================= -->
+
+<section class="section" id="quick-search">
+
+    <div class="section-heading">
+
+        <h2>Find an Ayurvedic Remedy</h2>
+
+        <p>
+            Search our AyurFix remedy database by symptom.
+        </p>
+
+    </div>
+
+
+    <div class="search-card">
+
+        <form class="search-form"
+              method="GET"
+              action="{{ url_for('home') }}">
+
+            <div class="search-input-wrapper">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    class="search-input"
+                    type="text"
+                    name="symptom"
+                    placeholder="Enter a symptom e.g. headache, indigestion, cold..."
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit" class="search-button">
+
+                <i class="fa-solid fa-search"></i>
+                Search
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HISTORY + PROFILE
+========================= -->
+
+<div class="two-column">
+
+
+    <!-- SEARCH HISTORY -->
+
+    <section class="history-card">
+
+        <div class="section-heading">
+
+            <h2>Your Recent Searches</h2>
+
+            <p>
+                Your personal AyurFix search activity.
+            </p>
+
+        </div>
+
+
+        {% if history %}
+
+            {% for item in history[:8] %}
+
+            <div class="history-item">
+
+                <div class="history-left">
+
+                    <div class="history-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+
+                    <div>
+
+                        <div class="history-name">
+                            {{ item.search_term }}
+                        </div>
+
+                        <div class="history-date">
+
+                            {{ item.searched_at.strftime("%d %B %Y") }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-date">
+
+                    {{ item.searched_at.strftime("%I:%M %p") }}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-history">
+
+                <i class="fa-solid fa-seedling"
+                   style="font-size: 30px; margin-bottom: 12px;">
+                </i>
+
+                <p>
+                    You haven't searched for any remedies yet.
+                </p>
+
+                <p style="margin-top: 5px;">
+                    Start your first search above.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+
+    <!-- PROFILE -->
+
+    <section class="profile-card">
+
+        <div class="section-heading">
+
+            <h2>Your Profile</h2>
+
+            <p>
+                Your AyurFix account information.
+            </p>
+
+        </div>
+
+
+        <div class="profile-top">
+
+            <div class="profile-avatar">
+
+                {{ current_user.full_name[0]|upper }}
+
+            </div>
+
+            <div>
+
+                <h3>
+                    {{ current_user.full_name }}
+                </h3>
+
+                <p>
+                    AyurFix Member
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-detail">
+
+            <div class="profile-label">
+                FULL NAME
+            </div>
+
+            <div class="profile-value">
+                {{ current_user.full_name }}
+            </div>
+
+        </div>
+
+
+        <div class="profile-detail">
+
+            <div class="profile-label">
+                EMAIL
+            </div>
+
+            <div class="profile-value">
+                {{ current_user.email }}
+            </div>
+
+        </div>
+
+
+        <div class="profile-detail">
+
+            <div class="profile-label">
+                ACCOUNT TYPE
+            </div>
+
+            <div class="profile-value">
+                {{ current_user.role|capitalize }}
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<!-- =========================
+     AYURVEDA SECTION
+========================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <h2>Explore Ayurveda</h2>
+
+        <p>
+            Discover natural wellness concepts and traditional Ayurvedic knowledge.
+        </p>
+
+    </div>
+
+
+    <div class="ayurveda-grid">
+
+
+        <div class="ayurveda-card herbs">
+
+            <div class="ayurveda-content">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <h3>
+                    Ayurvedic Herbs
+                </h3>
+
+                <p>
+                    Learn about herbs and their traditional uses.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ayurveda-card wellness">
+
+            <div class="ayurveda-content">
+
+                <i class="fa-solid fa-spa"></i>
+
+                <h3>
+                    Natural Wellness
+                </h3>
+
+                <p>
+                    Explore healthy habits inspired by Ayurveda.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ayurveda-card nature">
+
+            <div class="ayurveda-content">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                <h3>
+                    Nature & Balance
+                </h3>
+
+                <p>
+                    Discover the connection between nature and wellbeing.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DISCLAIMER
+========================= -->
+
+<section class="disclaimer">
+
+    <i class="fa-solid fa-circle-info"></i>
+
+    <div>
+
+        <h4>
+            Important Disclaimer
+        </h4>
+
+        <p>
+            AyurFix provides Ayurvedic and wellness information
+            for educational purposes only. The information provided
+            on this platform is not intended to replace professional
+            medical diagnosis, treatment, or advice. Please consult
+            a qualified healthcare professional for medical concerns.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    © 2026 AyurFix · Explore • Learn • Discover
+
+</footer>
+
+
+</main>
+
+</body>
+</html>
