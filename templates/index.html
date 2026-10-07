@@ -10,7 +10,6 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet">
@@ -22,7 +21,6 @@
         /* =====================================================
            GLOBAL
         ===================================================== */
-
         * {
             margin: 0;
             padding: 0;
@@ -65,26 +63,21 @@
             margin: auto;
         }
 
-
         /* =====================================================
            NAVIGATION
         ===================================================== */
-
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-
             background: rgba(255, 253, 243, 0.95);
             backdrop-filter: blur(12px);
-
             border-bottom: 1px solid rgba(75, 105, 48, 0.15);
         }
 
         .navbar {
             height: 78px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -99,16 +92,12 @@
         .logo-icon {
             width: 48px;
             height: 48px;
-
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             background: var(--dark-green);
             color: #f5e7b0;
-
             font-size: 24px;
         }
 
@@ -148,9 +137,7 @@
             left: 0;
             width: 0;
             height: 2px;
-
             background: var(--green);
-
             transition: 0.3s;
         }
 
@@ -160,12 +147,9 @@
 
         .login-btn {
             padding: 11px 20px;
-
             border-radius: 30px;
-
             background: var(--dark-green);
             color: white !important;
-
             transition: 0.3s;
         }
 
@@ -178,22 +162,16 @@
             display: none;
         }
 
-
         /* =====================================================
            HERO
         ===================================================== */
-
         .hero {
             min-height: 720px;
-
             padding-top: 78px;
-
             display: flex;
             align-items: center;
-
             position: relative;
             overflow: hidden;
-
             background:
                 radial-gradient(circle at 90% 30%, #dce7c5 0%, transparent 35%),
                 linear-gradient(120deg, #fbf8ec 0%, #f3edda 100%);
@@ -201,15 +179,11 @@
 
         .hero::before {
             content: "";
-
             position: absolute;
             width: 500px;
             height: 500px;
-
             border-radius: 50%;
-
             background: rgba(106, 139, 66, 0.08);
-
             right: -180px;
             top: -100px;
         }
@@ -217,9 +191,7 @@
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-
             align-items: center;
-
             gap: 50px;
         }
 
@@ -229,25 +201,18 @@
 
         .small-heading {
             color: var(--green);
-
             font-size: 15px;
             font-weight: 600;
-
             letter-spacing: 2px;
             text-transform: uppercase;
-
             margin-bottom: 15px;
         }
 
         .hero-title {
             font-family: "Playfair Display", serif;
-
             font-size: clamp(55px, 7vw, 90px);
-
             line-height: 0.95;
-
             color: var(--dark-green);
-
             margin-bottom: 20px;
         }
 
@@ -257,99 +222,118 @@
 
         .tagline {
             font-family: "Playfair Display", serif;
-
             font-size: 27px;
-
             color: var(--dark-brown);
-
             margin-bottom: 20px;
         }
 
         .hero-description {
             color: #58604e;
-
             line-height: 1.8;
-
             max-width: 550px;
-
             margin-bottom: 30px;
         }
 
-        /* SEARCH */
-
+        /* =====================================================
+           SEARCH (DROPDOWN VERSION)
+        ===================================================== */
         .search-box {
-            max-width: 600px;
-
+            max-width: 640px;
             background: white;
-
             border: 1px solid #b6c49e;
-
             border-radius: 50px;
-
             padding: 7px;
-
             display: flex;
             align-items: center;
-
             box-shadow: 0 12px 35px rgba(50, 70, 30, 0.12);
         }
 
         .search-icon {
-            width: 50px;
-
+            width: 46px;
+            flex-shrink: 0;
             display: flex;
             justify-content: center;
-
             font-size: 20px;
-
             color: var(--green);
         }
 
-        .search-box input {
+        .select-wrap {
+            position: relative;
             flex: 1;
+            min-width: 0;
+        }
 
+        .select-wrap::after {
+            content: "\f078";
+            /* Font Awesome chevron-down */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            color: var(--green);
+            pointer-events: none;
+        }
+
+        .search-box select {
+            width: 100%;
             border: none;
             outline: none;
-
+            background: transparent;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            font-family: inherit;
             font-size: 15px;
-
-            padding: 14px 5px;
-
             color: #333;
+            padding: 14px 30px 14px 10px;
+            cursor: pointer;
+            text-overflow: ellipsis;
+        }
+
+        .search-box select:disabled {
+            color: #9aa08f;
+            cursor: not-allowed;
+        }
+
+        .select-divider {
+            width: 1px;
+            height: 28px;
+            background: #d5dcc6;
+            flex-shrink: 0;
         }
 
         .search-box button {
             border: none;
-
             background: var(--dark-green);
-
             color: white;
-
             padding: 14px 25px;
-
             border-radius: 30px;
-
             cursor: pointer;
-
             font-weight: 600;
-
             transition: 0.3s;
+            white-space: nowrap;
+            margin-left: 6px;
         }
 
-        .search-box button:hover {
+        .search-box button:hover:not(:disabled) {
             background: var(--green);
+        }
+
+        .search-box button:disabled {
+            background: #a9b79a;
+            cursor: not-allowed;
         }
 
         .search-note {
             margin-top: 13px;
-
             font-size: 13px;
-
             color: #747866;
         }
 
         /* HERO IMAGE */
-
         .hero-right {
             display: flex;
             justify-content: center;
@@ -358,259 +342,151 @@
         .hero-image {
             width: 520px;
             height: 520px;
-
             border-radius: 50% 50% 45% 45%;
-
             overflow: hidden;
-
             border: 12px solid rgba(255, 255, 255, 0.55);
-
             box-shadow: 0 25px 60px rgba(47, 65, 28, 0.20);
-
             position: relative;
         }
 
         .hero-image img {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
         }
-
-        .floating-card {
-            position: absolute;
-
-            bottom: 70px;
-            left: 45px;
-
-            background: white;
-
-            padding: 15px 20px;
-
-            border-radius: 15px;
-
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-
-            display: flex;
-            align-items: center;
-
-            gap: 12px;
-        }
-
-        .floating-icon {
-            width: 42px;
-            height: 42px;
-
-            background: var(--light-green);
-
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: var(--green);
-        }
-
-        .floating-card strong {
-            display: block;
-            color: var(--dark-green);
-        }
-
-        .floating-card small {
-            color: #777;
-        }
-
 
         /* =====================================================
            SEARCH RESULT
         ===================================================== */
-
         #searchResult {
             display: none;
-
-            max-width: 600px;
-
+            max-width: 640px;
             margin-top: 20px;
-
             background: white;
-
             padding: 22px;
-
             border-radius: 18px;
-
             border-left: 5px solid var(--green);
-
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
         }
 
         #searchResult h3 {
             color: var(--dark-green);
-
             margin-bottom: 10px;
         }
 
         #searchResult p {
             color: #596052;
-
             line-height: 1.7;
         }
 
         #searchResult .remedy-title {
             color: var(--dark-brown);
-
             font-weight: 700;
-
             margin-top: 10px;
         }
-
 
         /* =====================================================
            FEATURES
         ===================================================== */
-
         .features-section {
             padding: 90px 0;
-
             background: #fffdf4;
         }
 
         .section-heading {
             text-align: center;
-
             margin-bottom: 50px;
         }
 
         .section-heading span {
             color: var(--green);
-
             font-size: 14px;
-
             font-weight: 600;
-
             text-transform: uppercase;
-
             letter-spacing: 2px;
         }
 
         .section-heading h2 {
             font-family: "Playfair Display", serif;
-
             font-size: 42px;
-
             color: var(--dark-green);
-
             margin: 10px 0;
         }
 
         .section-heading p {
             color: #70766a;
-
             max-width: 600px;
-
             margin: auto;
-
             line-height: 1.7;
         }
 
         .features-grid {
             display: grid;
-
             grid-template-columns: repeat(5, 1fr);
-
             gap: 18px;
         }
 
         .feature-card {
             background: #faf8ed;
-
             border: 1px solid #e3e3d1;
-
             border-radius: 18px;
-
             padding: 30px 18px;
-
             text-align: center;
-
             transition: 0.3s;
-
             position: relative;
         }
 
         .feature-card:hover {
             transform: translateY(-8px);
-
             box-shadow: 0 15px 35px rgba(51, 72, 32, 0.12);
-
             border-color: #b4c496;
         }
 
         .feature-icon {
             width: 72px;
             height: 72px;
-
             margin: 0 auto 18px;
-
             border-radius: 50%;
-
             background: #e8efd9;
-
             color: var(--green);
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 28px;
         }
 
         .feature-card h3 {
             font-family: "Playfair Display", serif;
-
             color: var(--dark-green);
-
             font-size: 20px;
-
             margin-bottom: 10px;
         }
 
         .feature-card p {
             font-size: 13px;
-
             line-height: 1.6;
-
             color: #71766a;
         }
-
 
         /* =====================================================
            AYURVEDA BANNER
         ===================================================== */
-
         .healing-section {
             padding: 80px 0;
         }
 
         .healing-box {
             min-height: 330px;
-
             border-radius: 30px;
-
             overflow: hidden;
-
             position: relative;
-
             display: flex;
             align-items: center;
-
             padding: 60px;
-
             background:
                 linear-gradient(90deg, rgba(238, 239, 207, 0.96), rgba(238, 239, 207, 0.55)),
                 url("https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1400&q=85");
-
             background-size: cover;
-
             background-position: center;
         }
 
@@ -620,72 +496,51 @@
 
         .healing-content h2 {
             font-family: "Playfair Display", serif;
-
             font-size: 42px;
-
             color: var(--dark-green);
-
             margin-bottom: 15px;
         }
 
         .healing-content p {
             line-height: 1.8;
-
             color: #525b45;
-
             margin-bottom: 25px;
         }
 
         .primary-btn {
             display: inline-block;
-
             padding: 13px 25px;
-
             background: var(--dark-green);
-
             color: white;
-
             border-radius: 30px;
-
             font-weight: 600;
-
             transition: 0.3s;
         }
 
         .primary-btn:hover {
             background: var(--green);
-
             transform: translateY(-3px);
         }
-
 
         /* =====================================================
            REMEDIES
         ===================================================== */
-
         .remedies-section {
             padding: 80px 0;
-
             background: #f4f1df;
         }
 
         .remedy-grid {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 25px;
         }
 
         .remedy-card {
             background: white;
-
             border-radius: 20px;
-
             overflow: hidden;
-
             box-shadow: 0 8px 25px rgba(53, 66, 36, 0.08);
-
             transition: 0.3s;
         }
 
@@ -696,7 +551,6 @@
         .remedy-card img {
             width: 100%;
             height: 220px;
-
             object-fit: cover;
         }
 
@@ -706,216 +560,83 @@
 
         .remedy-content h3 {
             font-family: "Playfair Display", serif;
-
             color: var(--dark-green);
-
             font-size: 23px;
-
             margin-bottom: 8px;
         }
 
         .remedy-content p {
             color: #6c7167;
-
             font-size: 14px;
-
             line-height: 1.7;
         }
 
         .remedy-link {
             display: inline-block;
-
             margin-top: 15px;
-
             color: var(--green);
-
             font-size: 14px;
-
             font-weight: 700;
         }
-
 
         /* =====================================================
            HOW IT WORKS
         ===================================================== */
-
         .how-section {
             padding: 90px 0;
-
             background: #fffdf4;
         }
 
         .steps {
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 40px;
-
             position: relative;
         }
 
         .step {
             text-align: center;
-
             position: relative;
         }
 
         .step-number {
             width: 65px;
             height: 65px;
-
             margin: 0 auto 20px;
-
             border-radius: 50%;
-
             background: var(--dark-green);
-
             color: white;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 22px;
-
             font-weight: 700;
         }
 
         .step h3 {
             font-family: "Playfair Display", serif;
-
             color: var(--dark-green);
-
             margin-bottom: 10px;
-
             font-size: 22px;
         }
 
         .step p {
             color: #72766b;
-
             line-height: 1.7;
-
             font-size: 14px;
-        }
-
-        .search-limit-overlay {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top: 35px;
-        }
-
-        .search-limit-box {
-            width: 100%;
-            max-width: 600px;
-
-            background: white;
-
-            padding: 40px 35px;
-
-            border-radius: 22px;
-
-            text-align: center;
-
-            border: 1px solid #dfe9dc;
-
-            box-shadow: 0 10px 35px rgba(40, 70, 45, 0.12);
-        }
-
-        .limit-icon {
-            width: 65px;
-            height: 65px;
-
-            margin: 0 auto 20px;
-
-            border-radius: 50%;
-
-            background: #edf6e9;
-            color: #4d7d52;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 27px;
-        }
-
-        .search-limit-box h2 {
-            font-family: "Playfair Display", serif;
-
-            color: #294b31;
-
-            font-size: 30px;
-
-            margin-bottom: 12px;
-        }
-
-        .search-limit-box p {
-            color: #6d786f;
-
-            line-height: 1.6;
-
-            margin-bottom: 7px;
-        }
-
-        .limit-buttons {
-            display: flex;
-
-            justify-content: center;
-
-            gap: 12px;
-
-            margin-top: 25px;
-        }
-
-        .create-account-btn,
-        .login-account-btn {
-            text-decoration: none;
-
-            padding: 12px 22px;
-
-            border-radius: 10px;
-
-            font-weight: 600;
-        }
-
-        .create-account-btn {
-            background: #477a4f;
-            color: white;
-        }
-
-        .create-account-btn:hover {
-            background: #37653f;
-        }
-
-        .login-account-btn {
-            background: #edf4ea;
-            color: #477a4f;
-        }
-
-        .login-account-btn:hover {
-            background: #dfeadd;
         }
 
         /* =====================================================
            TESTIMONIAL
         ===================================================== */
-
         .testimonial-section {
             padding: 90px 0;
-
             background:
                 linear-gradient(rgba(35, 77, 32, 0.94), rgba(35, 77, 32, 0.94)),
                 url("https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=1400&q=80");
-
             background-size: cover;
-
             background-position: center;
-
             color: white;
-
             text-align: center;
         }
 
@@ -926,25 +647,19 @@
 
         .testimonial {
             max-width: 700px;
-
             margin: auto;
         }
 
         .testimonial i {
             font-size: 35px;
-
             color: #d7c47b;
-
             margin-bottom: 20px;
         }
 
         .testimonial p {
             font-family: "Playfair Display", serif;
-
             font-size: 24px;
-
             line-height: 1.7;
-
             margin-bottom: 20px;
         }
 
@@ -952,26 +667,19 @@
             color: #e2d59b;
         }
 
-
         /* =====================================================
            FOOTER
         ===================================================== */
-
         footer {
             background: #173616;
-
             color: #dce5d3;
-
             padding-top: 60px;
         }
 
         .footer-grid {
             display: grid;
-
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
-
             gap: 40px;
-
             padding-bottom: 45px;
         }
 
@@ -981,54 +689,39 @@
 
         .footer-brand p {
             margin-top: 18px;
-
             max-width: 300px;
-
             color: #b8c3ae;
-
             line-height: 1.7;
-
             font-size: 14px;
         }
 
         .social-icons {
             display: flex;
-
             gap: 10px;
-
             margin-top: 22px;
         }
 
         .social-icons a {
             width: 38px;
             height: 38px;
-
             border: 1px solid #6d8063;
-
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             transition: 0.3s;
         }
 
         .social-icons a:hover {
             background: #d4c170;
-
             color: #173616;
-
             border-color: #d4c170;
         }
 
         footer h3 {
             color: white;
-
             font-family: "Playfair Display", serif;
-
             font-size: 20px;
-
             margin-bottom: 18px;
         }
 
@@ -1038,9 +731,7 @@
 
         .footer-links li {
             margin-bottom: 11px;
-
             font-size: 14px;
-
             color: #b8c3ae;
         }
 
@@ -1050,95 +741,65 @@
 
         .contact-info p {
             margin-bottom: 13px;
-
             color: #b8c3ae;
-
             font-size: 14px;
         }
 
         .contact-info i {
             color: #d4c170;
-
             width: 22px;
         }
 
         .copyright {
             border-top: 1px solid rgba(255, 255, 255, 0.12);
-
             padding: 20px;
-
             text-align: center;
-
             color: #9eaa96;
-
             font-size: 13px;
         }
-
 
         /* =====================================================
            MOBILE MENU
         ===================================================== */
-
         .menu-btn {
             display: none;
-
             border: none;
-
             background: none;
-
             font-size: 24px;
-
             color: var(--dark-green);
-
             cursor: pointer;
         }
 
-        /* ================================
-   ENJOYING AYURFIX POPUP
-   ================================ */
-
+        /* =====================================================
+           "ENJOYING AYURFIX?" POPUP (search limit)
+        ===================================================== */
         .popup-overlay {
             position: fixed !important;
             inset: 0 !important;
-
             width: 100vw !important;
             height: 100vh !important;
-
             background: rgba(0, 0, 0, 0.55) !important;
-
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-
             z-index: 99999 !important;
-
             margin: 0 !important;
             padding: 0 !important;
         }
 
-        /* White / light-green popup box */
         .popup-box {
             position: relative !important;
-
             width: 450px !important;
             max-width: 90vw !important;
-
             background: #f8fff4 !important;
-
             border-radius: 20px !important;
-
             padding: 40px 35px !important;
-
             text-align: center !important;
-
             box-sizing: border-box !important;
-
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30) !important;
-
             animation: popupAppear 0.3s ease-out !important;
         }
 
-        /* Popup animation */
         @keyframes popupAppear {
             from {
                 opacity: 0;
@@ -1151,119 +812,78 @@
             }
         }
 
-        /* Leaf circle */
         .popup-icon {
             width: 65px !important;
             height: 65px !important;
-
             margin: 0 auto 18px auto !important;
-
             border-radius: 50% !important;
-
             background: #e5f4df !important;
-
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-
             font-size: 30px !important;
             color: #28652f !important;
         }
 
-        /* Heading */
         .popup-box h2 {
             margin: 0 0 12px 0 !important;
-
             font-size: 28px !important;
-
             color: #1f4d27 !important;
         }
 
-        /* First paragraph */
         .popup-main-text {
             margin: 0 0 8px 0 !important;
-
             font-size: 16px !important;
-
             color: #333 !important;
         }
 
-        /* Second paragraph */
         .popup-sub-text {
             margin: 0 auto 28px auto !important;
-
             max-width: 360px !important;
-
             font-size: 15px !important;
-
             line-height: 1.5 !important;
-
             color: #666 !important;
         }
 
-        /* Buttons */
         .popup-buttons {
             display: flex !important;
-
             justify-content: center !important;
-
             gap: 12px !important;
         }
 
-        /* Create Account */
         .create-account-btn {
             padding: 13px 22px !important;
-
             border-radius: 10px !important;
-
             background: #43804c !important;
-
             color: white !important;
-
             text-decoration: none !important;
-
             font-weight: 600 !important;
         }
 
-        /* Login */
         .login-account-btn {
             padding: 13px 28px !important;
-
             border-radius: 10px !important;
-
             background: #e8f2e4 !important;
-
             color: #43804c !important;
-
             text-decoration: none !important;
-
             font-weight: 600 !important;
         }
 
-        /* Hover */
         .create-account-btn:hover,
         .login-account-btn:hover {
             transform: translateY(-2px);
         }
 
-        /* Close X */
         .popup-close {
             position: absolute !important;
-
             top: 12px !important;
             right: 16px !important;
-
             width: 32px !important;
             height: 32px !important;
-
             border: none !important;
-
             background: transparent !important;
-
             font-size: 25px !important;
-
             color: #666 !important;
-
             cursor: pointer !important;
         }
 
@@ -1274,9 +894,7 @@
         /* =====================================================
            RESPONSIVE
         ===================================================== */
-
         @media (max-width: 1000px) {
-
             .features-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -1304,11 +922,18 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .search-box {
+                width: 100%;
+            }
+
+            #searchResult {
+                text-align: left;
+                width: 100%;
+            }
         }
 
-
         @media (max-width: 700px) {
-
             .navbar {
                 height: 70px;
             }
@@ -1319,22 +944,14 @@
 
             .nav-links {
                 position: absolute;
-
                 top: 70px;
                 left: 0;
-
                 width: 100%;
-
                 background: #fffdf4;
-
                 display: none;
-
                 flex-direction: column;
-
                 padding: 25px;
-
                 gap: 25px;
-
                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             }
 
@@ -1358,22 +975,31 @@
                 font-size: 22px;
             }
 
+            /* dropdowns stack vertically on phones */
             .search-box {
                 border-radius: 20px;
-
-                flex-wrap: wrap;
-
+                flex-direction: column;
+                align-items: stretch;
                 padding: 10px;
+                gap: 4px;
             }
 
-            .search-box input {
-                min-width: 180px;
+            .search-icon {
+                display: none;
+            }
+
+            .select-divider {
+                width: 100%;
+                height: 1px;
+            }
+
+            .search-box select {
+                padding: 14px 30px 14px 12px;
             }
 
             .search-box button {
                 width: 100%;
-
-                margin-top: 7px;
+                margin: 7px 0 0 0;
             }
 
             .hero-image {
@@ -1404,76 +1030,47 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-
-
         }
     </style>
-
 </head>
 
-
 <body>
-
 
     <!-- =====================================================
      NAVIGATION
 ===================================================== -->
-
     <header>
-
         <div class="container navbar">
 
             <a href="#home" class="logo">
-
-                <div class="logo-icon">
-                    <i class="fa-solid fa-leaf"></i>
-                </div>
-
-                <div class="logo-text">
-                    Ayur<span>Fix</span>
-                </div>
-
+                <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+                <div class="logo-text">Ayur<span>Fix</span></div>
             </a>
-
 
             <button class="menu-btn" onclick="toggleMenu()">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-
             <nav class="nav-links" id="navLinks">
-
                 <a href="#home">Home</a>
-
                 <a href="#about">About Us</a>
-
                 <a href="#remedies">Remedies</a>
-
                 <a href="#faq">FAQ</a>
-
                 <a href="#contact">Contact</a>
-
                 <a href="{{ url_for('login') }}" class="login-btn">
                     <i class="fa-solid fa-user"></i>
                     Login / Register
                 </a>
-
             </nav>
 
         </div>
-
     </header>
-
-
 
     <!-- =====================================================
      HERO
 ===================================================== -->
-
     <section class="hero" id="home">
-
         <div class="container hero-content">
-
 
             <div class="hero-left">
 
@@ -1482,53 +1079,54 @@
                     Natural • Trusted • Ayurvedic
                 </div>
 
+                <h1 class="hero-title">Ayur<span>Fix</span></h1>
 
-                <h1 class="hero-title">
-                    Ayur<span>Fix</span>
-                </h1>
-
-
-                <div class="tagline">
-                    Ancient wisdom, instant relief verified!
-                </div>
-
+                <div class="tagline">Ancient wisdom, instant relief verified!</div>
 
                 <p class="hero-description">
-
                     Discover the power of Ayurveda through trusted,
                     natural remedies. Tell us what you're feeling and
                     explore simple Ayurvedic solutions for everyday
                     health and wellness.
-
                 </p>
 
-
-                <!-- SEARCH -->
-
-                <form class="search-box" method="GET" action="/">
+                <!-- ========== SEARCH: CATEGORY -> SYMPTOM DROPDOWNS ========== -->
+                <form class="search-box" method="GET" action="/" id="searchForm"
+                    data-categories='{{ (categories or {}) | tojson }}' data-category="{{ category or '' }}"
+                    data-symptom="{{ symptom or '' }}">
 
                     <div class="search-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
 
-                    <input type="text" name="symptom" value="{{ symptom or '' }}"
-                        placeholder="Enter your symptom e.g. headache, cold, acidity...">
+                    <!-- Dropdown 1: Category (options filled by JavaScript) -->
+                    <div class="select-wrap">
+                        <select id="categorySelect" name="category" required aria-label="Select category">
+                            <option value="">Select category</option>
+                        </select>
+                    </div>
 
-                    <button type="submit">
+                    <div class="select-divider"></div>
+
+                    <!-- Dropdown 2: Symptom (enabled after a category is chosen) -->
+                    <div class="select-wrap">
+                        <select id="symptomSelect" name="symptom" required disabled aria-label="Select symptom">
+                            <option value="">Select symptom</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="searchBtn" disabled>
                         Search Remedies
                     </button>
 
                 </form>
-
 
                 <div class="search-note">
                     <i class="fa-solid fa-seedling"></i>
                     Verified with Ministry of AYUSH Resources
                 </div>
 
-
                 <!-- SEARCH RESULT -->
-
                 {% if searched %}
                 <div id="searchResult" style="display: block;">
 
@@ -1540,9 +1138,7 @@
                     </h3>
 
                     {% for item in results %}
-
                     <div class="remedy-card" style="margin-top: 20px;">
-
                         <div class="remedy-content">
 
                             <p class="remedy-title">Ingredient:</p>
@@ -1561,9 +1157,7 @@
                             <p>{{ item.disclaimer }}</p>
 
                         </div>
-
                     </div>
-
                     {% endfor %}
 
                     {% else %}
@@ -1580,6 +1174,7 @@
                 {% endif %}
 
             </div>
+
             {% if limit_reached %}
             <div class="popup-overlay">
                 <div class="popup-box">
@@ -1587,15 +1182,12 @@
                     <button type="button" class="popup-close" onclick="this.closest('.popup-overlay').remove()">
                         &times;
                     </button>
-                    <div class="popup-icon">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
+
+                    <div class="popup-icon"><i class="fa-solid fa-leaf"></i></div>
 
                     <h2>Enjoying AyurFix?</h2>
 
-                    <p class="popup-main-text">
-                        You have used your 2 free searches.
-                    </p>
+                    <p class="popup-main-text">You have used your 2 free searches.</p>
 
                     <p class="popup-sub-text">
                         Please create an account or login to continue
@@ -1603,13 +1195,8 @@
                     </p>
 
                     <div class="popup-buttons">
-                        <a href="{{ url_for('register') }}" class="create-account-btn">
-                            Create Account
-                        </a>
-
-                        <a href="{{ url_for('login') }}" class="login-account-btn">
-                            Login
-                        </a>
+                        <a href="{{ url_for('register') }}" class="create-account-btn">Create Account</a>
+                        <a href="{{ url_for('login') }}" class="login-account-btn">Login</a>
                     </div>
 
                 </div>
@@ -1617,674 +1204,378 @@
             {% endif %}
 
             <!-- HERO IMAGE -->
-
             <div class="hero-right">
-
                 <div class="hero-image">
-
-                    <img src="C:\Users\Admin\Downloads\ay.jfif" alt="Ayurvedic herbs">
-
+                    <!-- Put ay.jfif inside the /static folder -->
+                    <img src="{{ url_for('static', filename='ay.jfif') }}" alt="Ayurvedic herbs">
                 </div>
-
-                <!--
-            <div class="floating-card">
-
-                <div class="floating-icon">
-                    <i class="fa-solid fa-shield-heart"></i>
-                </div>
-
-                <div>
-                    <strong>Verified Remedies</strong>
-                    <small>Natural & trusted knowledge</small>
-                </div>
-
-            </div>
---->
             </div>
 
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      FEATURES
 ===================================================== -->
-
     <section class="features-section" id="about">
-
         <div class="container">
 
             <div class="section-heading">
-
                 <span>Why AyurFix?</span>
-
                 <h2>Healthcare, the Ayurvedic Way</h2>
-
                 <p>
                     AyurFix brings traditional Ayurvedic knowledge
                     into one simple and accessible digital platform.
                 </p>
-
             </div>
-
 
             <div class="features-grid">
 
-
                 <div class="feature-card">
-
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3>Verified Remedies</h3>
-
-                    <p>
-                        Remedies are carefully selected from
-                        trusted Ayurvedic sources.
-                    </p>
-
+                    <p>Remedies are carefully selected from trusted Ayurvedic sources.</p>
                 </div>
 
-
                 <div class="feature-card">
-
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-
+                    <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
                     <h3>Ancient Wisdom</h3>
-
-                    <p>
-                        Explore traditional Ayurvedic knowledge
-                        in a simple modern format.
-                    </p>
-
+                    <p>Explore traditional Ayurvedic knowledge in a simple modern format.</p>
                 </div>
 
-
                 <div class="feature-card">
-
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-
+                    <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
                     <h3>All at One Place</h3>
-
-                    <p>
-                        Find remedies, ingredients and health
-                        information in one convenient platform.
-                    </p>
-
+                    <p>Find remedies, ingredients and health information in one convenient platform.</p>
                 </div>
 
-
                 <div class="feature-card">
-
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-
+                    <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
                     <h3>Easy & Simple</h3>
-
-                    <p>
-                        A clean interface makes finding natural
-                        remedies quick and easy.
-                    </p>
-
+                    <p>A clean interface makes finding natural remedies quick and easy.</p>
                 </div>
-
 
                 <div class="feature-card">
-
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-certificate"></i>
-                    </div>
-
+                    <div class="feature-icon"><i class="fa-solid fa-certificate"></i></div>
                     <h3>Trusted & Safe</h3>
-
-                    <p>
-                        Information is presented responsibly with
-                        a focus on safe wellness practices.
-                    </p>
-
+                    <p>Information is presented responsibly with a focus on safe wellness practices.</p>
                 </div>
-
 
             </div>
-
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      HEALING BANNER
 ===================================================== -->
-
     <section class="healing-section">
-
         <div class="container">
-
             <div class="healing-box">
-
                 <div class="healing-content">
-
-                    <h2>
-                        Healing the Natural Way
-                    </h2>
-
+                    <h2>Healing the Natural Way</h2>
                     <p>
                         Ayurveda is more than a system of treatment.
                         It is a holistic approach to maintaining balance
                         between the body, mind and lifestyle.
                     </p>
-
                     <a href="#remedies" class="primary-btn">
                         Explore Remedies
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      POPULAR REMEDIES
 ===================================================== -->
-
     <section class="remedies-section" id="remedies">
-
         <div class="container">
 
             <div class="section-heading">
-
                 <span>Explore Ayurveda</span>
-
                 <h2>Popular Ayurvedic Remedies</h2>
-
-                <p>
-                    Discover simple traditional approaches
-                    commonly used for everyday wellness.
-                </p>
-
+                <p>Discover simple traditional approaches commonly used for everyday wellness.</p>
             </div>
-
 
             <div class="remedy-grid">
 
-
                 <div class="remedy-card">
-
-                    <img src="C:\Users\Admin\Downloads\Ginger.jfif" alt="Ginger">
-
+                    <img src="{{ url_for('static', filename='Ginger.jfif') }}" alt="Ginger">
                     <div class="remedy-content">
-
                         <h3>Ginger</h3>
-
-                        <p>
-                            Traditionally used to support digestion
-                            and provide comfort during common
-                            digestive discomfort.
-                        </p>
-
-                        <a href="#" class="remedy-link">
-                            Learn More →
-                        </a>
-
+                        <p>Traditionally used to support digestion and provide comfort during common digestive
+                            discomfort.</p>
+                        <a href="#" class="remedy-link">Learn More →</a>
                     </div>
-
                 </div>
 
-
-
                 <div class="remedy-card">
-
-                    <img src="C:\Users\Admin\Downloads\turmeric.jfif" alt="Turmeric">
-
+                    <img src="{{ url_for('static', filename='turmeric.jfif') }}" alt="Turmeric">
                     <div class="remedy-content">
-
                         <h3>Turmeric</h3>
-
-                        <p>
-                            A traditional Ayurvedic ingredient widely
-                            valued for its wellness and antioxidant
-                            properties.
+                        <p>A traditional Ayurvedic ingredient widely valued for its wellness and antioxidant properties.
                         </p>
-
-                        <a href="#" class="remedy-link">
-                            Learn More →
-                        </a>
-
+                        <a href="#" class="remedy-link">Learn More →</a>
                     </div>
-
                 </div>
-
-
 
                 <div class="remedy-card">
-
-                    <img src="C:\Users\Admin\Downloads\tulsi.jfif" alt="Tulsi">
-
+                    <img src="{{ url_for('static', filename='tulsi.jfif') }}" alt="Tulsi">
                     <div class="remedy-content">
-
                         <h3>Tulsi</h3>
-
-                        <p>
-                            Traditionally regarded as a valuable
-                            Ayurvedic herb supporting everyday
-                            respiratory and general wellness.
-                        </p>
-
-                        <a href="#" class="remedy-link">
-                            Learn More →
-                        </a>
-
+                        <p>Traditionally regarded as a valuable Ayurvedic herb supporting everyday respiratory and
+                            general wellness.</p>
+                        <a href="#" class="remedy-link">Learn More →</a>
                     </div>
-
                 </div>
-
 
             </div>
-
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      HOW IT WORKS
 ===================================================== -->
-
     <section class="how-section">
-
         <div class="container">
 
             <div class="section-heading">
-
                 <span>Simple Process</span>
-
                 <h2>How AyurFix Works</h2>
-
-                <p>
-                    Finding Ayurvedic information should be simple.
-                    AyurFix makes the process easy.
-                </p>
-
+                <p>Finding Ayurvedic information should be simple. AyurFix makes the process easy.</p>
             </div>
-
 
             <div class="steps">
 
-
                 <div class="step">
-
-                    <div class="step-number">
-                        01
-                    </div>
-
-                    <h3>Enter Your Symptom</h3>
-
-                    <p>
-                        Tell AyurFix what you're experiencing
-                        using the search bar.
-                    </p>
-
+                    <div class="step-number">01</div>
+                    <h3>Choose Your Symptom</h3>
+                    <p>Pick a category, then select the symptom you're experiencing.</p>
                 </div>
 
-
-
                 <div class="step">
-
-                    <div class="step-number">
-                        02
-                    </div>
-
+                    <div class="step-number">02</div>
                     <h3>Explore Remedies</h3>
-
-                    <p>
-                        Discover relevant Ayurvedic remedies,
-                        ingredients and traditional approaches.
-                    </p>
-
+                    <p>Discover relevant Ayurvedic remedies, ingredients and traditional approaches.</p>
                 </div>
-
-
 
                 <div class="step">
-
-                    <div class="step-number">
-                        03
-                    </div>
-
+                    <div class="step-number">03</div>
                     <h3>Learn & Take Care</h3>
-
-                    <p>
-                        Understand the remedy and use the
-                        information responsibly for your wellness.
-                    </p>
-
+                    <p>Understand the remedy and use the information responsibly for your wellness.</p>
                 </div>
-
 
             </div>
-
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      TESTIMONIAL
 ===================================================== -->
-
     <section class="testimonial-section">
-
         <div class="container">
 
             <div class="section-heading">
-
                 <span>Our Users</span>
-
                 <h2>What People Say</h2>
-
             </div>
 
-
             <div class="testimonial">
-
                 <i class="fa-solid fa-quote-left"></i>
-
                 <p>
                     "AyurFix makes it much easier to discover
                     traditional Ayurvedic remedies without having
                     to search through different sources."
                 </p>
-
-                <strong>
-                    — AyurFix User
-                </strong>
-
+                <strong>— AyurFix User</strong>
             </div>
 
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      FAQ
 ===================================================== -->
-
     <section class="features-section" id="faq">
-
         <div class="container">
 
             <div class="section-heading">
-
                 <span>Need Help?</span>
-
                 <h2>Frequently Asked Questions</h2>
-
             </div>
-
 
             <div style="max-width:800px;margin:auto;">
 
-
                 <details style="padding:20px;border-bottom:1px solid #ddd;">
-
-                    <summary style="font-weight:600;cursor:pointer;">
-                        What is AyurFix?
-                    </summary>
-
+                    <summary style="font-weight:600;cursor:pointer;">What is AyurFix?</summary>
                     <p style="padding-top:15px;color:#70766a;line-height:1.7;">
                         AyurFix is a website that brings Ayurvedic
                         remedies and traditional wellness information
                         together in one easy-to-use platform.
                     </p>
-
                 </details>
 
-
-
                 <details style="padding:20px;border-bottom:1px solid #ddd;">
-
-                    <summary style="font-weight:600;cursor:pointer;">
-                        How do I search for a remedy?
-                    </summary>
-
+                    <summary style="font-weight:600;cursor:pointer;">How do I search for a remedy?</summary>
                     <p style="padding-top:15px;color:#70766a;line-height:1.7;">
-                        Enter your symptom in the search box on the
-                        homepage and AyurFix will display a relevant
-                        traditional remedy from its available information.
+                        Choose a category from the first dropdown, then select
+                        your symptom from the second dropdown and click
+                        "Search Remedies" to see the relevant traditional remedies.
                     </p>
-
                 </details>
 
-
-
                 <details style="padding:20px;border-bottom:1px solid #ddd;">
-
-                    <summary style="font-weight:600;cursor:pointer;">
-                        Are AyurFix remedies a replacement for doctors?
+                    <summary style="font-weight:600;cursor:pointer;">Are AyurFix remedies a replacement for doctors?
                     </summary>
-
                     <p style="padding-top:15px;color:#70766a;line-height:1.7;">
                         No. AyurFix provides general Ayurvedic wellness
                         information and should not replace professional
                         medical advice or treatment.
                     </p>
-
                 </details>
 
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <!-- =====================================================
      FOOTER
 ===================================================== -->
-
     <footer id="contact">
-
         <div class="container">
-
             <div class="footer-grid">
 
-
                 <div class="footer-brand">
-
                     <div class="logo">
-
-                        <div class="logo-icon">
-                            <i class="fa-solid fa-leaf"></i>
-                        </div>
-
-                        <div class="logo-text">
-                            Ayur<span>Fix</span>
-                        </div>
-
+                        <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <div class="logo-text">Ayur<span>Fix</span></div>
                     </div>
-
-
                     <p>
                         Your trusted destination for exploring
                         Ayurvedic remedies, traditional knowledge
                         and natural wellness.
                     </p>
-
-
                     <div class="social-icons">
-
-                        <a href="#">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-
-                        <a href="#">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a href="#">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-
-                        <a href="#">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
-
                 </div>
 
-
-
                 <div>
-
                     <h3>Quick Links</h3>
-
                     <ul class="footer-links">
-
-                        <li>
-                            <a href="#home">Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#about">About Us</a>
-                        </li>
-
-                        <li>
-                            <a href="#remedies">Remedies</a>
-                        </li>
-
-                        <li>
-                            <a href="#faq">FAQ</a>
-                        </li>
-
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#remedies">Remedies</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
-
                 </div>
-
-
 
                 <div>
-
                     <h3>Popular Categories</h3>
-
                     <ul class="footer-links">
-
                         <li>Digestive Health</li>
-
-                        <li>Cold & Cough</li>
-
-                        <li>Stress & Relaxation</li>
-
-                        <li>Skin Care</li>
-
-                        <li>General Wellness</li>
-
+                        <li>Respiratory, Cold & Fever</li>
+                        <li>Pain, Ache & Body Discomfort</li>
+                        <li>Skin, Hair & Beauty</li>
+                        <li>General Wellness & Lifestyle</li>
                     </ul>
-
                 </div>
-
-
 
                 <div class="contact-info">
-
                     <h3>Contact Us</h3>
-
-                    <p>
-                        <i class="fa-solid fa-envelope"></i>
-                        support@ayurfix.com
-                    </p>
-
-                    <p>
-                        <i class="fa-solid fa-phone"></i>
-                        +91 98765 43210
-                    </p>
-
-                    <p>
-                        <i class="fa-solid fa-location-dot"></i>
-                        India
-                    </p>
-
+                    <p><i class="fa-solid fa-envelope"></i> support@ayurfix.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fa-solid fa-location-dot"></i> India</p>
                 </div>
 
-
             </div>
-
         </div>
-
 
         <div class="copyright">
-
             © 2026 AyurFix. All Rights Reserved.
             <i class="fa-solid fa-leaf"></i>
-
         </div>
-
     </footer>
-
-
 
     <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
-
     <script>
-
-
-        /* =====================================================
-           MOBILE MENU
-        ===================================================== */
-
+        /* ---------- Mobile menu ---------- */
         function toggleMenu() {
-
-            document
-                .getElementById("navLinks")
-                .classList
-                .toggle("active");
-
+            document.getElementById("navLinks").classList.toggle("active");
         }
 
+        /* ---------- Data sent from Flask (read from the form's data-attributes) ---------- */
+        const searchForm = document.getElementById("searchForm");
 
+        // category -> [symptoms], built from the database in app.py
+        let SYMPTOM_DATA = {};
+        try {
+            SYMPTOM_DATA = JSON.parse(searchForm.dataset.categories || "{}");
+        } catch (e) {
+            SYMPTOM_DATA = {};
+        }
 
-        /* =====================================================
-           AYURVEDIC REMEDY SEARCH
-        ===================================================== */
+        // previously selected values (so dropdowns stay selected after searching)
+        const SELECTED_CATEGORY = searchForm.dataset.category || "";
+        const SELECTED_SYMPTOM = searchForm.dataset.symptom || "";
 
+        const categorySelect = document.getElementById("categorySelect");
+        const symptomSelect = document.getElementById("symptomSelect");
+        const searchBtn = document.getElementById("searchBtn");
 
+        /* Fill the category dropdown */
+        Object.keys(SYMPTOM_DATA).forEach(function (cat) {
+            const opt = document.createElement("option");
+            opt.value = cat;
+            opt.textContent = cat;
+            categorySelect.appendChild(opt);
+        });
 
+        /* Fill the symptom dropdown for the chosen category */
+        function loadSymptoms(category, selectedSymptom) {
+            symptomSelect.innerHTML = '<option value="">Select symptom</option>';
 
+            const list = SYMPTOM_DATA[category];
+            if (!list) {
+                symptomSelect.disabled = true;
+                searchBtn.disabled = true;
+                return;
+            }
 
-    </script>
-    <script>
-        function closePopup() {
-            document.querySelector(".popup-overlay").style.display = "none";
+            list.forEach(function (sym) {
+                const opt = document.createElement("option");
+                opt.value = sym;
+                opt.textContent = sym;
+                if (sym === selectedSymptom) opt.selected = true;
+                symptomSelect.appendChild(opt);
+            });
+
+            symptomSelect.disabled = false;
+            searchBtn.disabled = !symptomSelect.value;
+        }
+
+        categorySelect.addEventListener("change", function () {
+            loadSymptoms(this.value, "");
+        });
+
+        symptomSelect.addEventListener("change", function () {
+            searchBtn.disabled = !this.value;
+        });
+
+        /* Restore previous selection after the page reloads with results */
+        if (SELECTED_CATEGORY && SYMPTOM_DATA[SELECTED_CATEGORY]) {
+            categorySelect.value = SELECTED_CATEGORY;
+            loadSymptoms(SELECTED_CATEGORY, SELECTED_SYMPTOM);
         }
     </script>
-
 
 </body>
 
