@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func, inspect, text
 
 from flask_login import (
     LoginManager,
@@ -119,6 +120,10 @@ class Remedy(db.Model):
         primary_key=True
     )
 
+    category = db.Column(
+        db.String(100)
+    )
+
     symptom = db.Column(
         db.String(200),
         nullable=False
@@ -146,6 +151,86 @@ class Remedy(db.Model):
 
 
 # -----------------------------
+# CATEGORY -> SYMPTOM MAP
+# (symptom names must match data.json exactly)
+# Used by import_remedies.py to fill the category column
+# -----------------------------
+
+CATEGORY_MAP = {
+    "Digestive Health": [
+        "Abdominal pain", "Abdominal pain (from diarrhoea)", "Bleeding piles",
+        "Constipation", "Diarrhoea", "Diarrhoea in children",
+        "Diarrhoea/Dysentery", "Diarrhoea/Vomiting", "Dysentery",
+        "Flatulence", "Flatulence (gas)", "Hyper-acidity",
+        "Hyper-acidity/Peptic ulcer/Constipation", "Indigestion",
+        "Indigestion/Loss of appetite", "Intestinal worms", "Kidney stone",
+        "Loss of appetite", "Piles", "Vomiting",
+    ],
+    "Respiratory, Cold & Fever": [
+        "Cold", "Cold with fever", "Cold/Cough", "Cold/Hiccough", "Cough",
+        "Cough/Cold", "Dry cough", "Ear pain", "Fever", "Hiccough",
+        "Hoarseness of voice", "Nasal block", "Sinusitis",
+    ],
+    "Pain, Ache & Body Discomfort": [
+        "Aches & pains", "Body ache", "Headache", "Joint pain",
+        "Painful menses", "Tension headache", "Toothache",
+    ],
+    "Skin, Hair & Beauty": [
+        "Acne", "Black pigmentation", "Dandruff", "Dandruff/Ring worm",
+        "Face pack/skin glow", "Greying of hair",
+        "Greying of hair/Hair fall/Dandruff", "Hair fall", "Skin allergy",
+        "Skin disease", "Skin diseases", "Ulcer/Wounds/Burns",
+        "Urticaria (skin allergy)", "Wound/Ulcer", "Wound/Ulcer/Skin disease",
+        "Wounds/Ulcer", "Wounds/Ulcer/Burn",
+    ],
+    "Oral & Dental Care": [
+        "Bad breath", "Bleeding gums", "Bleeding gums/tartar/bad breath",
+        "Pyorrhoea", "Pyorrhoea (bleeding gums)",
+    ],
+    "Women's & Children's Health": [
+        "Irritability (children)", "Lactation support", "Memory (children)",
+    ],
+    "General Wellness & Lifestyle": [
+        "Dehydration", "Dehydration/Sun stroke", "Diabetes",
+        "General health/nutrition", "Mental tension", "Obesity", "Stress",
+        "Sun stroke", "Sunstroke/Dehydration",
+    ],
+}
+
+# reverse lookup: symptom -> category
+SYMPTOM_TO_CATEGORY = {
+    symptom: category
+    for category, symptoms in CATEGORY_MAP.items()
+    for symptom in symptoms
+}
+
+
+def get_categories():
+    """Build {category: [symptoms]} from the database for the dropdowns."""
+
+    rows = db.session.query(
+        Remedy.category,
+        Remedy.symptom
+    ).filter(
+        Remedy.category.isnot(None)
+    ).distinct().all()
+
+    found = {}
+
+    for category, symptom in rows:
+        found.setdefault(category, []).append(symptom)
+
+    # keep category order from CATEGORY_MAP, symptoms A-Z
+    ordered = {}
+
+    for category in CATEGORY_MAP:
+        if category in found:
+            ordered[category] = sorted(found[category])
+
+    return ordered
+
+
+# -----------------------------
 # LOAD USER
 # -----------------------------
 
@@ -165,10 +250,18 @@ def load_user(user_id):
 @app.route("/")
 def home():
     symptom = request.args.get("symptom", "").strip()
+    category = request.args.get("category", "").strip()
+
+    # dropdown data (category -> symptoms) comes from the database
+    categories = get_categories()
 
     # Normal home page
     if not symptom:
-        return render_template("index.html", searched=False)
+        return render_template(
+            "index.html",
+            searched=False,
+            categories=categories
+        )
 
     # --------------------------------
     # GUEST SEARCH RESTRICTION
@@ -183,7 +276,8 @@ def home():
             return render_template(
                 "index.html",
                 searched=False,
-                limit_reached=True
+                limit_reached=True,
+                categories=categories
             )
 
         # Count this search
@@ -205,22 +299,24 @@ def home():
 
     # --------------------------------
     # SEARCH REMEDY DATABASE
+    # Exact match, because the symptom now comes from a dropdown
+    # (so "Cold" no longer also returns "Cold/Cough")
     # --------------------------------
 
-    query = symptom.lower()
-
     match = Remedy.query.filter(
-        Remedy.symptom.ilike(f"%{query}%")
+        func.lower(Remedy.symptom) == symptom.lower()
     ).all()
 
-    print("SEARCH:", symptom)
+    print("SEARCH:", category, "->", symptom)
     print("MATCHES:", [r.symptom for r in match])
 
     return render_template(
         "index.html",
         searched=True,
         symptom=symptom,
-        results=match
+        category=category,
+        results=match,
+        categories=categories
     )
 
 # -----------------------------
@@ -414,6 +510,14 @@ def logout():
 
 with app.app_context():
     db.create_all()
+
+    # Older ayurfix.db files have no "category" column in the remedy table.
+    # Add it automatically so the app never crashes (users are kept).
+    existing_columns = [c["name"] for c in inspect(db.engine).get_columns("remedy")]
+
+    if "category" not in existing_columns:
+        db.session.execute(text("ALTER TABLE remedy ADD COLUMN category VARCHAR(100)"))
+        db.session.commit()
 
 
 # -----------------------------
